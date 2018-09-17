@@ -5,17 +5,17 @@ import java.time.LocalDate;
 
 public class Controller {
     @FXML
-    private TableView<MatchupData> m_tableView;
+    private TableView<MatchData> m_tableView;
     @FXML
-    private TableColumn<MatchupData, String> m_deckNameColumn;
+    private TableColumn<MatchData, String> m_deckNameColumn;
     @FXML
-    private TableColumn<MatchupData, String> m_oppNameColumn;
+    private TableColumn<MatchData, String> m_oppNameColumn;
     @FXML
-    private TableColumn<MatchupData, String> m_resultColumn;
+    private TableColumn<MatchData, String> m_resultColumn;
     @FXML
-    private TableColumn<MatchupData, LocalDate> m_dateColumn;
+    private TableColumn<MatchData, LocalDate> m_dateColumn;
     @FXML
-    private TableColumn<MatchupData, String> m_eventNameColumn;
+    private TableColumn<MatchData, String> m_eventNameColumn;
 
     @FXML
     private Label m_deckNameLabel;
@@ -55,15 +55,15 @@ public class Controller {
         m_tableView.setItems(m_main.getMatches());
     }
 
-    private void showMatchDetails(MatchupData matchupData)
+    private void showMatchDetails(MatchData matchData)
     {
-        if ( matchupData != null )
+        if ( matchData != null )
         {
-            m_deckNameLabel.setText(matchupData.getDeckName());
-            m_oppNameLabel.setText(matchupData.getOppName());
-            m_resultLabel.setText(matchupData.getResult());
-            m_dateLabel.setText(matchupData.getDate().toString());
-            m_eventNameLabel.setText(matchupData.getEventName());
+            m_deckNameLabel.setText(matchData.getDeckName());
+            m_oppNameLabel.setText(matchData.getOppName());
+            m_resultLabel.setText(matchData.getResult());
+            m_dateLabel.setText(matchData.getDate().toString());
+            m_eventNameLabel.setText(matchData.getEventName());
         }
         else
         {
@@ -96,7 +96,7 @@ public class Controller {
     @FXML
     private void handleNewMatch()
     {
-        MatchupData tempMatch = new MatchupData();
+        MatchData tempMatch = new MatchData();
         boolean okClicked = m_main.showMatchEditDialog(tempMatch);
         if (okClicked)
             m_main.getMatches().add(tempMatch);
@@ -105,7 +105,7 @@ public class Controller {
     @FXML
     private void handleEditMatch()
     {
-        MatchupData selectedMatch = m_tableView.getSelectionModel().getSelectedItem();
+        MatchData selectedMatch = m_tableView.getSelectionModel().getSelectedItem();
         if(selectedMatch != null)
         {
             boolean bOkClicked = m_main.showMatchEditDialog(selectedMatch);

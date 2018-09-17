@@ -3,12 +3,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MatchupDataTest {
+class MatchDataTest {
 
     @Test
     @DisplayName("makeResult test")
     void makeResult() {
-        assertEquals("Win(2/0)", MatchupData.makeResult(2,0,false));
+        assertEquals("Win(2/0)", MatchData.makeResult(2,0,false));
     }
 
     @Test

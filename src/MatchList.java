@@ -2,19 +2,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class MatchList {
-    private ObservableList<MatchupData> m_matches = FXCollections.observableArrayList();
+    private ObservableList<MatchData> m_matches = FXCollections.observableArrayList();
 
     public MatchList()
     {
 
     }
 
-    public void add(MatchupData match)
+    public void add(MatchData match)
     {
         m_matches.add(match);
     }
 
-    public ObservableList<MatchupData> getMatches()
+    public ObservableList<MatchData> getMatches()
     {
         return m_matches;
     }

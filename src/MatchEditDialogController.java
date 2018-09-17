@@ -23,7 +23,7 @@ public class MatchEditDialogController {
     private TextField m_eventNameField;
 
     private Stage m_dialogStage;
-    private MatchupData m_matchData;
+    private MatchData m_matchData;
     private boolean m_bOkClicked = false;
 
     @FXML
@@ -35,13 +35,13 @@ public class MatchEditDialogController {
         m_dialogStage = dialogStage;
     }
 
-    public void setMatchData(MatchupData match)
+    public void setMatchData(MatchData match)
     {
         m_matchData = match;
 
         m_deckNameField.setText(m_matchData.getDeckName());
         m_oppNameField.setText(m_matchData.getOppName());
-        int[] results = MatchupData.parseResult(m_matchData.getResult());
+        int[] results = MatchData.parseResult(m_matchData.getResult());
         if ( results != null)
         {
             m_winsField.setText(Integer.toString(results[0]));
@@ -65,7 +65,7 @@ public class MatchEditDialogController {
             int iWins = Integer.parseInt(m_winsField.getText());
             int iLosses = Integer.parseInt(m_lossesField.getText());
             boolean bDraw = m_drawCheckbox.isSelected();
-            m_matchData.setResult(MatchupData.makeResult(iWins, iLosses, bDraw));
+            m_matchData.setResult(MatchData.makeResult(iWins, iLosses, bDraw));
             m_matchData.setDate(m_datePicker.getValue());
             m_matchData.setEventName(m_eventNameField.getText());
 

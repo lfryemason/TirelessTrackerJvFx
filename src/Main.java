@@ -1,11 +1,9 @@
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -23,11 +21,11 @@ public class Main extends Application {
 
     public Main()
     {
-        m_matchList.add(new MatchupData("D&T", "Tron", 2, 1, false, LocalDate.of(2018,9,9), "FNM"));
-        m_matchList.add(new MatchupData("D&T", "Affinity", 0, 2, false, LocalDate.of(2018,9,9), "FNM"));
-        m_matchList.add(new MatchupData("D&T", "UW Control", 1, 2, false, LocalDate.of(2018,9,9), "FNM"));
-        m_matchList.add(new MatchupData("D&T", "Jund", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));
-        m_matchList.add(new MatchupData("D&T", "Burn", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));
+        m_matchList.add(new MatchData("D&T", "Tron", 2, 1, false, LocalDate.of(2018,9,9), "FNM"));
+        m_matchList.add(new MatchData("D&T", "Affinity", 0, 2, false, LocalDate.of(2018,9,9), "FNM"));
+        m_matchList.add(new MatchData("D&T", "UW Control", 1, 2, false, LocalDate.of(2018,9,9), "FNM"));
+        m_matchList.add(new MatchData("D&T", "Jund", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));
+        m_matchList.add(new MatchData("D&T", "Burn", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));
     }
 
     @Override
@@ -72,7 +70,7 @@ public class Main extends Application {
         }
     }
 
-    public boolean showMatchEditDialog(MatchupData match)
+    public boolean showMatchEditDialog(MatchData match)
     {
         try
         {
@@ -101,7 +99,7 @@ public class Main extends Application {
         }
     }
 
-    public ObservableList<MatchupData> getMatches()
+    public ObservableList<MatchData> getMatches()
     {
         return m_matchList.getMatches();
     }

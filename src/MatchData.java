@@ -5,7 +5,7 @@ import javafx.beans.property.StringProperty;
 
 import java.time.LocalDate;
 
-public class MatchupData
+public class MatchData
 {
 
     private final StringProperty m_deckName;
@@ -14,12 +14,12 @@ public class MatchupData
     private final ObjectProperty<LocalDate> m_date;
     private final StringProperty m_eventName;
 
-    public MatchupData()
+    public MatchData()
     {
         this(null,null,0,0,false,null,null);
     }
 
-    public MatchupData(String deckName, String oppName, int wins, int losses, boolean draw, LocalDate date, String eventName)
+    public MatchData(String deckName, String oppName, int wins, int losses, boolean draw, LocalDate date, String eventName)
     {
         m_deckName = new SimpleStringProperty(deckName);
         m_oppName = new SimpleStringProperty(oppName);
