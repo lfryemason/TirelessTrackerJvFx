@@ -45,7 +45,7 @@ public class Main extends Application {
 
         if ( m_rootLayout.getPrefWidth() > width )
             m_rootLayout.setMaxWidth(width);
-        if ( m_rootLayout.getPrefHeight() > height )
+        if ( m_rootLayout.getPrefHeight() >= height )
             m_rootLayout.setPrefHeight(height - 100);
 
         Scene scene = new Scene(m_rootLayout);
