@@ -37,6 +37,8 @@ public class MatchData
             result = "Win";
         else if ( losses > wins )
             result = "Loss";
+        else
+            result = "Draw";
 
         return result + "(" + wins + "/" + losses + ")";
     }
