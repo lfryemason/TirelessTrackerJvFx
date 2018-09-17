@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -33,9 +34,19 @@ public class Main extends Application {
         m_primaryStage = primaryStage;
         m_primaryStage.setTitle("Tireless Tracker - Match tracker");
 
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int width = gd.getDisplayMode().getWidth();
+        int height = gd.getDisplayMode().getHeight();
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("view/RootLayout.fxml"));
         m_rootLayout = (BorderPane) loader.load();
+
+        if ( m_rootLayout.getPrefWidth() > width )
+            m_rootLayout.setMaxWidth(width);
+        if ( m_rootLayout.getPrefHeight() > height )
+            m_rootLayout.setMaxHeight(height);
+
         Scene scene = new Scene(m_rootLayout);
         m_primaryStage.setScene(scene);
         showList();
@@ -51,6 +62,14 @@ public class Main extends Application {
             HBox trackerMain = loader.load();
 
             m_rootLayout.setCenter(trackerMain);
+
+            GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+            int width = gd.getDisplayMode().getWidth();
+            int height = gd.getDisplayMode().getHeight();
+            if ( trackerMain.getPrefWidth() > width )
+                trackerMain.setMaxWidth(width);
+            if ( trackerMain.getPrefHeight() > height )
+                trackerMain.setMaxHeight(height - 25);
 
             Controller controller = loader.getController();
             controller.setMain(this);
