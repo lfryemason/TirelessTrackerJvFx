@@ -3,6 +3,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
@@ -45,7 +46,7 @@ public class Main extends Application {
         if ( m_rootLayout.getPrefWidth() > width )
             m_rootLayout.setMaxWidth(width);
         if ( m_rootLayout.getPrefHeight() > height )
-            m_rootLayout.setMaxHeight(height);
+            m_rootLayout.setPrefHeight(height - 100);
 
         Scene scene = new Scene(m_rootLayout);
         m_primaryStage.setScene(scene);
@@ -59,17 +60,9 @@ public class Main extends Application {
         {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("view/TrackerMain.fxml"));
-            HBox trackerMain = loader.load();
+            SplitPane trackerMain = loader.load();
 
             m_rootLayout.setCenter(trackerMain);
-
-            GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-            int width = gd.getDisplayMode().getWidth();
-            int height = gd.getDisplayMode().getHeight();
-            if ( trackerMain.getPrefWidth() > width )
-                trackerMain.setMaxWidth(width);
-            if ( trackerMain.getPrefHeight() > height )
-                trackerMain.setMaxHeight(height - 25);
 
             Controller controller = loader.getController();
             controller.setMain(this);
