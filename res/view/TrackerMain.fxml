@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <SplitPane dividerPositions="0.66" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <items>
       <TableView fx:id="m_tableView">
@@ -32,7 +31,7 @@
       </TableView>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <center>
-            <AnchorPane prefHeight="743.0" prefWidth="535.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="743.0" prefWidth="366.0" BorderPane.alignment="CENTER">
                <children>
                   <Label layoutX="11.0" layoutY="14.0" prefHeight="25.0" text="Match Details" textAlignment="CENTER" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                      <font>
@@ -47,6 +46,7 @@
                     <rowConstraints>
                       <RowConstraints maxHeight="50.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="50.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="50.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="50.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="50.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
@@ -54,17 +54,18 @@
                      <children>
                         <Label text="Deck Name:" />
                         <Label text="Opponent's deck:" GridPane.rowIndex="1" />
-                        <Label text="Result:" GridPane.rowIndex="2" />
-                        <Label text="Date:" GridPane.rowIndex="3" />
-                        <Label text="Event:" GridPane.rowIndex="4" />
+                        <Label text="Result:" GridPane.rowIndex="3" />
+                        <Label text="Date:" GridPane.rowIndex="4" />
+                        <Label text="Event:" GridPane.rowIndex="5" />
                         <Label fx:id="m_deckNameLabel" text="Label" GridPane.columnIndex="1" />
                         <Label fx:id="m_oppNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="m_resultLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="m_dateLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="m_eventNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="m_resultLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="m_dateLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="m_eventNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" text="matchup details" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
-                  <Label layoutX="14.0" layoutY="192.0" prefHeight="25.0" prefWidth="311.0" text="Matchup stats" textAlignment="CENTER">
+                  <Label layoutX="14.0" layoutY="192.0" prefHeight="25.0" prefWidth="311.0" text="Overall stats" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
