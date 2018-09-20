@@ -25,7 +25,7 @@ public class Main extends Application {
         m_matchList.add(new MatchData("D&T", "Affinity", 0, 2, false, LocalDate.of(2018,9,9), "FNM"));
         m_matchList.add(new MatchData("D&T", "UW Control", 1, 2, false, LocalDate.of(2018,9,9), "FNM"));
         m_matchList.add(new MatchData("D&T", "Jund", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));
-        m_matchList.add(new MatchData("D&T", "Burn", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));
+        m_matchList.add(new MatchData("D&T", "Tron", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));
     }
 
     @Override
