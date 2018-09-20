@@ -30,8 +30,7 @@ public class MatchList {
         return m_matches;
     }
 
-
-    public class MatchupName {
+    public static class MatchupName {
 
         private final String deckName;
         private final String oppName;
