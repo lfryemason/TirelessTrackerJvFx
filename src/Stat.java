@@ -40,36 +40,51 @@ public class Stat {
     }
     public void generateStats(List<MatchData> list)
     {
-
         for(MatchData match : list)
         {
-            String matchRes = match.getResult();
-
-            if ( matchRes == null )
-                continue;
-
-            if ( matchRes.startsWith("Win") )
-                m_iNumWins++;
-            if ( matchRes.startsWith("Loss") )
-                m_iNumLosses++;
-            if ( matchRes.startsWith("Draw") )
-                m_iNumDraws++;
-
-            m_iMatchesPlayed++;
-
-            int[] iResult = MatchData.parseResult( matchRes );
-            if ( iResult.length != 3 )
-                continue;
-            m_iNumGameWins += iResult[0];
-            m_iNumGameLosses += iResult[1];
-            m_iNumGamesPlayed += iResult[0] + iResult[1];
+            addMatchHelper(match);
         }
+        updatePerc();
+    }
 
+    private void updatePerc()
+    {
         m_fWinPerc = 100 * (float)m_iNumWins / m_iMatchesPlayed;
         m_fLossPerc = 100 * (float)m_iNumLosses / m_iMatchesPlayed;
         m_fDrawPerc = 100 * (float)m_iNumDraws / m_iMatchesPlayed;
         m_fGameWinPerc = 100 * (float)m_iNumGameWins / m_iNumGamesPlayed;
         m_fGameLossPerc = 100 * (float)m_iNumGameLosses / m_iNumGamesPlayed;
+    }
+
+    private void addMatchHelper(MatchData match)
+    {
+        String matchRes = match.getResult();
+
+        if ( matchRes == null )
+            return;
+
+        if ( matchRes.startsWith("Win") )
+            m_iNumWins++;
+        if ( matchRes.startsWith("Loss") )
+            m_iNumLosses++;
+        if ( matchRes.startsWith("Draw") )
+            m_iNumDraws++;
+
+        m_iMatchesPlayed++;
+
+        int[] iResult = MatchData.parseResult( matchRes );
+        if ( iResult.length != 3 )
+            return;
+        m_iNumGameWins += iResult[0];
+        m_iNumGameLosses += iResult[1];
+        m_iNumGamesPlayed += iResult[0] + iResult[1];
+
+    }
+
+    public void addMatch(MatchData match)
+    {
+        addMatchHelper(match);
+        updatePerc();
     }
 
     public int getMatchesPlayed() {
