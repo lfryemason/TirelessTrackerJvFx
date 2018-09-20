@@ -25,6 +25,12 @@ public class Stat {
         m_iNumLosses = 0;
         m_iNumGameLosses = 0;
         m_iNumDraws = 0;
+
+        m_fWinPerc = 0;
+        m_fLossPerc = 0;
+        m_fDrawPerc = 0;
+        m_fGameWinPerc = 0;
+        m_fGameWinPerc = 0;
     }
 
     public Stat(List<MatchData> list)
@@ -63,7 +69,7 @@ public class Stat {
         m_fLossPerc = 100 * (float)m_iNumLosses / m_iMatchesPlayed;
         m_fDrawPerc = 100 * (float)m_iNumDraws / m_iMatchesPlayed;
         m_fGameWinPerc = 100 * (float)m_iNumGameWins / m_iNumGamesPlayed;
-        m_fGameWinPerc = 100 * (float)m_iNumGameLosses / m_iNumGamesPlayed;
+        m_fGameLossPerc = 100 * (float)m_iNumGameLosses / m_iNumGamesPlayed;
     }
 
     public int getMatchesPlayed() {
