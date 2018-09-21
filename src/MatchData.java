@@ -28,6 +28,15 @@ public class MatchData
         m_eventName = new SimpleStringProperty(eventName);
     }
 
+    public MatchData(MatchData match)
+    {
+        m_deckName = new SimpleStringProperty(match.getDeckName());
+        m_oppName = new SimpleStringProperty(match.getOppName());
+        m_result = new SimpleStringProperty(match.getResult());
+        m_date = new SimpleObjectProperty(match.getDate());
+        m_eventName = new SimpleStringProperty(match.getEventName());
+    }
+
     public static String makeResult(int wins, int losses, boolean draw)
     {
         String result = "";

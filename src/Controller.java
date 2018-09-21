@@ -55,6 +55,12 @@ public class Controller {
         m_tableView.setItems(m_main.getMatches());
     }
 
+    private void setOverallStats()
+    {
+        Stat overallStats = m_main.getMatchList().getStats();
+
+    }
+
     private void showMatchDetails(MatchData matchData)
     {
         if ( matchData != null )
@@ -80,7 +86,7 @@ public class Controller {
     {
         int selectedIndex = m_tableView.getSelectionModel().getSelectedIndex();
         if ( selectedIndex >= 0 )
-            m_tableView.getItems().remove(selectedIndex);
+            m_main.getMatchList().remove(selectedIndex);
         else
         {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -99,18 +105,22 @@ public class Controller {
         MatchData tempMatch = new MatchData();
         boolean okClicked = m_main.showMatchEditDialog(tempMatch);
         if (okClicked)
-            m_main.getMatches().add(tempMatch);
+            m_main.getMatchList().add(tempMatch);
     }
 
     @FXML
     private void handleEditMatch()
     {
         MatchData selectedMatch = m_tableView.getSelectionModel().getSelectedItem();
+        int selectedIndex = m_tableView.getSelectionModel().getSelectedIndex();
         if(selectedMatch != null)
         {
             boolean bOkClicked = m_main.showMatchEditDialog(selectedMatch);
             if (bOkClicked)
+            {
+                m_main.getMatchList().editMatch(selectedIndex, selectedMatch);
                 showMatchDetails(selectedMatch);
+            }
         }
         else
         {

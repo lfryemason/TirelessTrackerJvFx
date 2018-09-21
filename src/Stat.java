@@ -49,11 +49,25 @@ public class Stat {
 
     private void updatePerc()
     {
-        m_fWinPerc = 100 * (float)m_iNumWins / m_iMatchesPlayed;
-        m_fLossPerc = 100 * (float)m_iNumLosses / m_iMatchesPlayed;
-        m_fDrawPerc = 100 * (float)m_iNumDraws / m_iMatchesPlayed;
-        m_fGameWinPerc = 100 * (float)m_iNumGameWins / m_iNumGamesPlayed;
-        m_fGameLossPerc = 100 * (float)m_iNumGameLosses / m_iNumGamesPlayed;
+        if ( m_iMatchesPlayed <= 0 )
+        {
+            m_fWinPerc = 0;
+            m_fLossPerc = 0;
+            m_fDrawPerc = 0;
+        }
+        else if ( m_iNumGamesPlayed <= 0 )
+        {
+            m_fGameWinPerc = 0;
+            m_fGameLossPerc = 0;
+        }
+        else
+        {
+            m_fWinPerc = 100 * (float) m_iNumWins / m_iMatchesPlayed;
+            m_fLossPerc = 100 * (float) m_iNumLosses / m_iMatchesPlayed;
+            m_fDrawPerc = 100 * (float) m_iNumDraws / m_iMatchesPlayed;
+            m_fGameWinPerc = 100 * (float) m_iNumGameWins / m_iNumGamesPlayed;
+            m_fGameLossPerc = 100 * (float) m_iNumGameLosses / m_iNumGamesPlayed;
+        }
     }
 
     private void addMatchHelper(MatchData match)
@@ -85,6 +99,37 @@ public class Stat {
     {
         addMatchHelper(match);
         updatePerc();
+    }
+
+    public void removeMatch(MatchData match)
+    {
+        String matchRes = match.getResult();
+
+        if ( matchRes == null )
+            return;
+
+        if ( matchRes.startsWith("Win") && m_iNumWins > 0 )
+            m_iNumWins--;
+        if ( matchRes.startsWith("Loss") && m_iNumLosses > 0 )
+            m_iNumLosses--;
+        if ( matchRes.startsWith("Draw") && m_iNumDraws > 0)
+            m_iNumDraws--;
+
+        m_iMatchesPlayed++;
+
+        int[] iResult = MatchData.parseResult( matchRes );
+        if ( iResult.length != 3 )
+            return;
+        m_iNumGameWins -= iResult[0];
+        m_iNumGameLosses -= iResult[1];
+        m_iNumGamesPlayed -= iResult[0] + iResult[1];
+
+        if ( m_iNumGameWins < 0 )
+            m_iNumGameWins = 0;
+        if ( m_iNumGameLosses < 0 )
+            m_iNumGameLosses = 0;
+        if ( m_iNumGamesPlayed <= 0 )
+            m_iNumGamesPlayed = 1;
     }
 
     public int getMatchesPlayed() {

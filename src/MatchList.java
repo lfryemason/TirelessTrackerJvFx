@@ -1,5 +1,6 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.css.Match;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -11,9 +12,12 @@ public class MatchList {
 
     private Map<MatchupName, List<MatchData>> m_mapMatchups;
 
+    private Stat m_overallStats;
+
     public MatchList()
     {
         m_mapMatchups = new HashMap<>();
+        m_overallStats = new Stat();
     }
 
     public void add(MatchData match)
@@ -23,11 +27,35 @@ public class MatchList {
         if ( m_mapMatchups.get(matchup) == null )
             m_mapMatchups.put(matchup, new LinkedList<>());
         m_mapMatchups.get(matchup).add(match);
+
+        m_overallStats.addMatch(match);
+    }
+
+    public void remove(int index)
+    {
+        MatchData match = m_matches.remove(index);
+
+        MatchupName matchupName = new MatchupName(match);
+        if ( m_mapMatchups.get(matchupName) != null )
+            m_mapMatchups.get(matchupName).remove(match);
+
+        m_overallStats.removeMatch(match);
+    }
+
+    public void editMatch(int index, MatchData match)
+    {
+        remove(index);
+        add(match);
     }
 
     public ObservableList<MatchData> getMatches()
     {
         return m_matches;
+    }
+
+    public Stat getStats()
+    {
+        return m_overallStats;
     }
 
     public static class MatchupName {

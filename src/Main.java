@@ -104,6 +104,11 @@ public class Main extends Application {
         return m_matchList.getMatches();
     }
 
+    public MatchList getMatchList()
+    {
+        return m_matchList;
+    }
+
     public Stage getPrimaryStage()
     {
         return m_primaryStage;
