@@ -28,6 +28,19 @@ public class Controller {
     @FXML
     private Label m_eventNameLabel;
 
+    @FXML
+    private Label m_numMatchesPlayedLabel;
+    @FXML
+    private Label m_numWinsLabel;
+    @FXML
+    private Label m_numLossesLabel;
+    @FXML
+    private Label m_numDrawsLabel;
+    @FXML
+    private Label m_winPercLabel;
+    @FXML
+    private Label m_gameWinPercLabel;
+
     private Main m_main;
 
     public Controller()
@@ -44,6 +57,7 @@ public class Controller {
         m_eventNameColumn.setCellValueFactory(cellData -> cellData.getValue().eventNameProperty());
 
         showMatchDetails(null);
+        showOverallStats();
 
         m_tableView.getSelectionModel().selectedItemProperty().addListener((obs,old,newM) -> showMatchDetails(newM));
     }
@@ -53,12 +67,7 @@ public class Controller {
         m_main = main;
 
         m_tableView.setItems(m_main.getMatches());
-    }
-
-    private void setOverallStats()
-    {
-        Stat overallStats = m_main.getMatchList().getStats();
-
+        showOverallStats();
     }
 
     private void showMatchDetails(MatchData matchData)
@@ -81,12 +90,38 @@ public class Controller {
         }
     }
 
+    private void showOverallStats()
+    {
+        if ( m_main != null && m_main.getMatchList() != null )
+        {
+            Stat stats = m_main.getMatchList().getStats();
+            m_numMatchesPlayedLabel.setText(Integer.toString(stats.getMatchesPlayed()));
+            m_numWinsLabel.setText(Integer.toString(stats.getNumWins()));
+            m_numLossesLabel.setText(Integer.toString(stats.getNumLosses()));
+            m_numDrawsLabel.setText(Integer.toString(stats.getNumDraws()));
+            m_winPercLabel.setText(Float.toString(stats.getWinPerc()));
+            m_gameWinPercLabel.setText(Float.toString(stats.getGameWinPerc()));
+        }
+        else
+        {
+            m_numMatchesPlayedLabel.setText("");
+            m_numWinsLabel.setText("");
+            m_numLossesLabel.setText("");
+            m_numDrawsLabel.setText("");
+            m_winPercLabel.setText("");
+            m_gameWinPercLabel.setText("");
+        }
+
+    }
+
     @FXML
     private void handleDelete()
     {
         int selectedIndex = m_tableView.getSelectionModel().getSelectedIndex();
-        if ( selectedIndex >= 0 )
+        if ( selectedIndex >= 0 ) {
             m_main.getMatchList().remove(selectedIndex);
+            showOverallStats();
+        }
         else
         {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -105,7 +140,10 @@ public class Controller {
         MatchData tempMatch = new MatchData();
         boolean okClicked = m_main.showMatchEditDialog(tempMatch);
         if (okClicked)
+        {
             m_main.getMatchList().add(tempMatch);
+            showOverallStats();
+        }
     }
 
     @FXML
@@ -120,6 +158,7 @@ public class Controller {
             {
                 m_main.getMatchList().editMatch(selectedIndex, selectedMatch);
                 showMatchDetails(selectedMatch);
+                showOverallStats();
             }
         }
         else

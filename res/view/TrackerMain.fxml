@@ -85,18 +85,18 @@
                         <RowConstraints maxHeight="50.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
+                         <Label text="Number of matches played:" GridPane.rowIndex="0"/>
                         <Label text="Number of wins:" GridPane.rowIndex="1" />
                         <Label text="Number of losses:" GridPane.rowIndex="2" />
                         <Label text="Number of draws:" GridPane.rowIndex="3" />
                         <Label text="Win percentage:" GridPane.rowIndex="4" />
-                        <Label text="Event:" GridPane.rowIndex="5" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label text="Number of matches played:" />
-                        <Label text="Label" GridPane.columnIndex="1" />
+                        <Label text="Game win percentage:" GridPane.rowIndex="5" />
+                        <Label fx:id="m_numMatchesPlayedLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        <Label fx:id="m_numWinsLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="m_numLossesLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="m_numDrawsLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="m_winPercLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="m_gameWinPercLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                   <Separator layoutX="14.0" layoutY="219.0" opacity="0.0" prefHeight="14.0" prefWidth="311.0" />
