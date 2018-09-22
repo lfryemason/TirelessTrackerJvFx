@@ -65,13 +65,13 @@
                         <Button mnemonicParsing="false" text="matchup details" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
-                  <Label layoutX="14.0" layoutY="192.0" prefHeight="25.0" prefWidth="311.0" text="Overall stats" textAlignment="CENTER">
+                  <Label layoutX="14.0" layoutY="215.0" prefHeight="25.0" prefWidth="311.0" text="Overall stats" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Separator layoutX="14.0" layoutY="178.0" prefHeight="14.0" prefWidth="311.0" />
-                  <GridPane layoutX="14.0" layoutY="217.0" prefHeight="125.0" prefWidth="335.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+                  <Separator layoutX="26.0" layoutY="198.0" prefHeight="14.0" prefWidth="311.0" />
+                  <GridPane layoutX="14.0" layoutY="240.0" prefHeight="125.0" prefWidth="335.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.0" minWidth="10.0" prefWidth="236.0" />
                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="75.0" />
@@ -99,7 +99,6 @@
                         <Label fx:id="m_gameWinPercLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
-                  <Separator layoutX="14.0" layoutY="219.0" opacity="0.0" prefHeight="14.0" prefWidth="311.0" />
                </children>
             </AnchorPane>
          </center>
