@@ -1,9 +1,38 @@
+import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MatchDataTest {
+    @Test
+    void createJson()
+    {
+        {
+            MatchData match = new MatchData("D&T", "Tron", 2, 1, false, LocalDate.of(2018, 9, 9), "FNM");
+            JSONObject json = match.createJson();
+            assertEquals("D&T", json.get("deckName"));
+            assertEquals(LocalDate.of(2018, 9, 9), json.get("date"));
+            assertEquals(2, json.get("wins"));
+        }
+        {
+            MatchData match = new MatchData("", "", 2, 1, false, LocalDate.of(2018, 9, 9), "");
+            JSONObject json = match.createJson();
+            assertEquals("", json.get("deckName"));
+            assertEquals(LocalDate.of(2018, 9, 9), json.get("date"));
+            assertEquals(2, json.get("wins"));
+        }
+        /** TODO: Add checks when creating json for null or missing fields
+        {
+            MatchData match = new MatchData("D&T", "Tron", 2, 1, false, null, "FNM");
+            JSONObject json = match.createJson();
+            assertEquals("D&T", json.get("deckName"));
+            assertEquals(null, json.get("date"));
+            assertEquals(2, json.get("wins"));
+        }**/
+    }
 
     @Test
     @DisplayName("makeResult test")

@@ -2,6 +2,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import org.json.JSONObject;
 
 import java.time.LocalDate;
 
@@ -50,6 +51,20 @@ public class MatchData
             result = "Draw";
 
         return result + "(" + wins + "/" + losses + ")";
+    }
+
+    public JSONObject createJson()
+    {
+        JSONObject result = new JSONObject();
+        result.put("deckName", getDeckName());
+        result.put("oppName", getOppName());
+        int[] res = parseResult(getResult());
+        result.put("wins", res[0]);
+        result.put("losses", res[1]);
+        result.put("draw", res[2] == 1);
+        result.put("date", getDate());
+        result.put("eventName", getEventName());
+        return result;
     }
 
     public String getDeckName()
