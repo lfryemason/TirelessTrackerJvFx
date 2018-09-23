@@ -115,7 +115,8 @@ public class Stat {
         if ( matchRes.startsWith("Draw") && m_iNumDraws > 0)
             m_iNumDraws--;
 
-        m_iMatchesPlayed++;
+        if ( m_iMatchesPlayed > 0 )
+            m_iMatchesPlayed--;
 
         int[] iResult = MatchData.parseResult( matchRes );
         if ( iResult.length != 3 )
@@ -128,8 +129,10 @@ public class Stat {
             m_iNumGameWins = 0;
         if ( m_iNumGameLosses < 0 )
             m_iNumGameLosses = 0;
-        if ( m_iNumGamesPlayed <= 0 )
-            m_iNumGamesPlayed = 1;
+        if ( m_iNumGamesPlayed < 0 )
+            m_iNumGamesPlayed = 0;
+
+        updatePerc();
     }
 
     public int getMatchesPlayed() {
