@@ -1,6 +1,8 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.css.Match;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -56,6 +58,28 @@ public class MatchList {
     public Stat getStats()
     {
         return m_overallStats;
+    }
+
+    public JSONArray createJsonArray()
+    {
+        JSONArray result = new JSONArray();
+        for ( MatchData match : m_matches )
+        {
+            result.put(match.createJson());
+        }
+        return result;
+    }
+
+    public static MatchList makeMatchListFromJsonArray(JSONArray json)
+    {
+        MatchList matchList = new MatchList();
+        int i = 0;
+        while ( ! json.isNull(i) )
+        {
+            matchList.add(MatchData.makeMatchFromJson(json.getJSONObject(i)));
+            i++;
+        }
+        return matchList;
     }
 
     public static class MatchupName {
