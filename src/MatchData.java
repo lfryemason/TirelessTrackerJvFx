@@ -2,6 +2,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.time.LocalDate;
@@ -36,6 +37,24 @@ public class MatchData
         m_result = new SimpleStringProperty(match.getResult());
         m_date = new SimpleObjectProperty(match.getDate());
         m_eventName = new SimpleStringProperty(match.getEventName());
+    }
+
+    public static MatchData makeMatchFromJson(JSONObject json)
+    {
+        MatchData match = new MatchData();
+        try
+        {
+            match.setDeckName(json.getString("deckName"));
+            match.setOppName(json.getString("oppName"));
+            match.setResult(makeResult(json.getInt("wins"), json.getInt("losses"), json.getBoolean("draw")));
+            match.setDate((LocalDate) json.get("date"));
+            match.setEventName(json.getString("eventName"));
+        }
+        catch ( JSONException e )
+        {
+            return null;
+        }
+        return match;
     }
 
     public static String makeResult(int wins, int losses, boolean draw)

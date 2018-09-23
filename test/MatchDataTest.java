@@ -1,3 +1,4 @@
+import javafx.css.Match;
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,6 +33,19 @@ class MatchDataTest {
             assertEquals(null, json.get("date"));
             assertEquals(2, json.get("wins"));
         }**/
+    }
+
+    @Test
+    void makeMatchFromJson()
+    {
+        MatchData match = new MatchData("D&T", "Tron", 2, 1, false, LocalDate.of(2018, 9, 9), "FNM");
+        JSONObject json = match.createJson();
+        MatchData matchTest = MatchData.makeMatchFromJson(json);
+        assertEquals(match.getDeckName(), matchTest.getDeckName());
+        assertEquals(match.getOppName(), matchTest.getOppName() );
+        assertEquals(match.getResult(), matchTest.getResult() );
+        assertEquals(match.getDate(), matchTest.getDate() );
+        assertEquals(match.getEventName(), matchTest.getEventName() );
     }
 
     @Test
