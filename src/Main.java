@@ -21,11 +21,20 @@ public class Main extends Application {
 
     public Main()
     {
-        m_matchList.add(new MatchData("D&T", "Tron", 2, 1, false, LocalDate.of(2018,9,9), "FNM"));
-        m_matchList.add(new MatchData("D&T", "Affinity", 0, 2, false, LocalDate.of(2018,9,9), "FNM"));
-        m_matchList.add(new MatchData("D&T", "UW Control", 1, 2, false, LocalDate.of(2018,9,9), "FNM"));
-        m_matchList.add(new MatchData("D&T", "Jund", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));
-        m_matchList.add(new MatchData("D&T", "Tron", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));
+        /**MatchList matchList = new MatchList();
+        matchList.add(new MatchData("D&T", "Tron", 2, 1, false, LocalDate.of(2018,9,9), "FNM"));
+        matchList.add(new MatchData("D&T", "Affinity", 0, 2, false, LocalDate.of(2018,9,9), "FNM"));
+        matchList.add(new MatchData("D&T", "UW Control", 1, 2, false, LocalDate.of(2018,9,9), "FNM"));
+        matchList.add(new MatchData("D&T", "Jund", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));
+        matchList.add(new MatchData("D&T", "Tron", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));**/
+        try
+        {
+            //JSONLoader.exportJson("out/testOut.json", matchList);
+            m_matchList = JSONLoader.importMatchList("out/testOut.json");
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override

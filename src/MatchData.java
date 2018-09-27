@@ -47,7 +47,7 @@ public class MatchData
             match.setDeckName(json.getString("deckName"));
             match.setOppName(json.getString("oppName"));
             match.setResult(makeResult(json.getInt("wins"), json.getInt("losses"), json.getBoolean("draw")));
-            match.setDate((LocalDate) json.get("date"));
+            match.setDate(LocalDate.parse(json.getString("date")));
             match.setEventName(json.getString("eventName"));
         }
         catch ( JSONException e )
@@ -81,7 +81,7 @@ public class MatchData
         result.put("wins", res[0]);
         result.put("losses", res[1]);
         result.put("draw", res[2] == 1);
-        result.put("date", getDate());
+        result.put("date", getDate().toString());
         result.put("eventName", getEventName());
         return result;
     }
