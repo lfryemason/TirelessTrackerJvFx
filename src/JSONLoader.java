@@ -22,6 +22,7 @@ public class JSONLoader
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String fileContents = reader.readLine();
         JSONArray json = new JSONArray(fileContents);
+        reader.close();
         return MatchList.makeMatchListFromJsonArray(json);
     }
 

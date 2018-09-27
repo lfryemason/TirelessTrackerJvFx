@@ -19,18 +19,13 @@ public class Main extends Application {
 
     private MatchList m_matchList = new MatchList();
 
+    private final static String G_SZMATCHLISTOUTPUTFILE = "res/data/matches.json";
+
     public Main()
     {
-        /**MatchList matchList = new MatchList();
-        matchList.add(new MatchData("D&T", "Tron", 2, 1, false, LocalDate.of(2018,9,9), "FNM"));
-        matchList.add(new MatchData("D&T", "Affinity", 0, 2, false, LocalDate.of(2018,9,9), "FNM"));
-        matchList.add(new MatchData("D&T", "UW Control", 1, 2, false, LocalDate.of(2018,9,9), "FNM"));
-        matchList.add(new MatchData("D&T", "Jund", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));
-        matchList.add(new MatchData("D&T", "Tron", 2, 0, false, LocalDate.of(2018,9,9), "FNM"));**/
         try
         {
-            //JSONLoader.exportJson("out/testOut.json", matchList);
-            m_matchList = JSONLoader.importMatchList("out/testOut.json");
+            m_matchList = JSONLoader.importMatchList(G_SZMATCHLISTOUTPUTFILE);
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -59,6 +54,19 @@ public class Main extends Application {
         m_primaryStage.setScene(scene);
         showList();
         primaryStage.show();
+    }
+
+    @Override
+    public void stop(){
+        try
+        {
+            JSONLoader.exportJson(G_SZMATCHLISTOUTPUTFILE, m_matchList);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        // Save file
     }
 
     public void showList()
