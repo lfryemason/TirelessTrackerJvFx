@@ -89,6 +89,8 @@ public class MatchupStatDialogController
         m_numLossesLabel.setText(Integer.toString(stats.getNumLosses()));
         m_gamesWonLabel.setText(Integer.toString(stats.getNumGameWins()));
         m_gamesLostLabel.setText(Integer.toString(stats.getNumGameLosses()));
+
+        Controller.showPieChart(m_pieChart, stats);
     }
 
     public void setMatches (List<MatchData> matches)

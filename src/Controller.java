@@ -106,8 +106,8 @@ public class Controller {
             m_numWinsLabel.setText(Integer.toString(stats.getNumWins()));
             m_numLossesLabel.setText(Integer.toString(stats.getNumLosses()));
             m_numDrawsLabel.setText(Integer.toString(stats.getNumDraws()));
-            m_winPercLabel.setText(Float.toString(stats.getWinPerc()));
-            m_gameWinPercLabel.setText(Float.toString(stats.getGameWinPerc()));
+            m_winPercLabel.setText(String.format("%.2f", stats.getWinPerc()) + "%");
+            m_gameWinPercLabel.setText(String.format("%.2f", stats.getGameWinPerc()) + "%");
 
             showPieChart(m_pieChart, stats);
         }
@@ -177,8 +177,8 @@ public class Controller {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(m_main.getPrimaryStage());
             alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
+            alert.setHeaderText("No Match Selected");
+            alert.setContentText("Please select a match in the table.");
 
             alert.showAndWait();
         }
@@ -208,9 +208,9 @@ public class Controller {
 public static void showPieChart(PieChart pieChart, Stat stats)
 {
     ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                                                    new PieChart.Data("Won", stats.getNumWins()),
-                                                    new PieChart.Data("Lost", stats.getNumLosses()),
-                                                    new PieChart.Data("Draw", stats.getNumDraws()));
+            new PieChart.Data("Won "  + String.format("%.1f", stats.getWinPerc())  + "%", stats.getNumWins()),
+            new PieChart.Data("Lost " + String.format("%.1f", stats.getLossPerc()) + "%", stats.getNumLosses()),
+            new PieChart.Data("Draw " + String.format("%.1f", stats.getDrawPerc()) + "%", stats.getNumDraws()));
     pieChart.setData(pieChartData);
 }
 }
