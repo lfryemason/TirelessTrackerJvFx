@@ -199,7 +199,7 @@
    <bottom>
       <ButtonBar prefHeight="25.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <buttons>
-            <Button fx:id="m_okButton" mnemonicParsing="false" text="OK" />
+            <Button mnemonicParsing="false" onAction="#handleOkButton" text="OK" />
          </buttons>
       </ButtonBar>
    </bottom>

@@ -19,8 +19,6 @@ public class MatchupStatDialogController
     @FXML
     private Label m_oppDeckLabel;
     @FXML
-    private Button m_okButton;
-    @FXML
     private PieChart m_pieChart;
     @FXML
     private TableView m_table;
@@ -103,4 +101,9 @@ public class MatchupStatDialogController
         setStats(new Stat(m_matches));
     }
 
+    @FXML
+    private void handleOkButton()
+    {
+        m_dialogStage.close();
+    }
 }
