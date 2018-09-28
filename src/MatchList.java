@@ -60,6 +60,11 @@ public class MatchList {
         return m_overallStats;
     }
 
+    public List<MatchData> getMatchup(MatchupName matchup)
+    {
+        return m_mapMatchups.get(matchup);
+    }
+
     public JSONArray createJsonArray()
     {
         JSONArray result = new JSONArray();

@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchupStatDialogController">
+<BorderPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchupStatDialogController">
    <center>
       <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -125,9 +125,9 @@
                         </GridPane>
                         <TableView fx:id="m_table" prefWidth="200.0">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="Result" />
-                              <TableColumn prefWidth="75.0" text="Date" />
-                              <TableColumn prefWidth="75.0" text="Event" />
+                              <TableColumn fx:id="m_resultColumn" prefWidth="75.0" text="Result" />
+                              <TableColumn fx:id="m_dateColumn" prefWidth="75.0" text="Date" />
+                              <TableColumn fx:id="m_eventNameColumn" prefWidth="75.0" text="Event" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

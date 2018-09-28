@@ -134,7 +134,7 @@ public class Main extends Application {
             MatchupStatDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setMatchup(matchup);
-            controller.setStats(m_matchList.getStats());
+            controller.setMatches(m_matchList.getMatchup(matchup));
 
             dialogStage.showAndWait();
 
