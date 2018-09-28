@@ -184,6 +184,27 @@ public class Controller {
         }
     }
 
+    @FXML
+    public void handleMatchupDetails()
+    {
+        MatchData selectedMatch = m_tableView.getSelectionModel().getSelectedItem();
+        if(selectedMatch != null)
+        {
+            m_main.showMatchupStatDialog(new MatchList.MatchupName(selectedMatch));
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(m_main.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+
+            alert.showAndWait();
+        }
+
+    }
+
 public static void showPieChart(PieChart pieChart, Stat stats)
 {
     ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(

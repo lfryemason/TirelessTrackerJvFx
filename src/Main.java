@@ -116,6 +116,35 @@ public class Main extends Application {
         }
     }
 
+    public void showMatchupStatDialog(MatchList.MatchupName matchup)
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/view/MatchupStatDialog.fxml"));
+            BorderPane dialog = loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Matchup");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(m_primaryStage);
+            Scene scene = new Scene(dialog);
+            dialogStage.setScene(scene);
+
+            MatchupStatDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setMatchup(matchup);
+            controller.setStats(m_matchList.getStats());
+
+            dialogStage.showAndWait();
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+            return;
+        }
+    }
+
     public ObservableList<MatchData> getMatches()
     {
         return m_matchList.getMatches();

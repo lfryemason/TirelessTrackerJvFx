@@ -97,6 +97,16 @@ public class MatchList {
             this(match.getDeckName(), match.getOppName());
         }
 
+        public String getDeckName()
+        {
+            return deckName;
+        }
+
+        public String getOppName()
+        {
+            return oppName;
+        }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
