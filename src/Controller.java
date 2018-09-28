@@ -1,4 +1,7 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 
 import java.time.LocalDate;
@@ -41,6 +44,9 @@ public class Controller {
     @FXML
     private Label m_gameWinPercLabel;
 
+    @FXML
+    private PieChart m_pieChart;
+
     private Main m_main;
 
     public Controller()
@@ -59,6 +65,7 @@ public class Controller {
         showMatchDetails(null);
         showOverallStats();
 
+        //m_pieChart.setTitle("Overall match statistics");
         m_tableView.getSelectionModel().selectedItemProperty().addListener((obs,old,newM) -> showMatchDetails(newM));
     }
 
@@ -101,6 +108,8 @@ public class Controller {
             m_numDrawsLabel.setText(Integer.toString(stats.getNumDraws()));
             m_winPercLabel.setText(Float.toString(stats.getWinPerc()));
             m_gameWinPercLabel.setText(Float.toString(stats.getGameWinPerc()));
+
+            showPieChart(m_pieChart, stats);
         }
         else
         {
@@ -110,6 +119,8 @@ public class Controller {
             m_numDrawsLabel.setText("");
             m_winPercLabel.setText("");
             m_gameWinPercLabel.setText("");
+
+            m_pieChart.setData(FXCollections.observableArrayList());
         }
 
     }
@@ -172,4 +183,13 @@ public class Controller {
             alert.showAndWait();
         }
     }
+
+public static void showPieChart(PieChart pieChart, Stat stats)
+{
+    ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                                                    new PieChart.Data("Won", stats.getNumWins()),
+                                                    new PieChart.Data("Lost", stats.getNumLosses()),
+                                                    new PieChart.Data("Draw", stats.getNumDraws()));
+    pieChart.setData(pieChartData);
+}
 }
