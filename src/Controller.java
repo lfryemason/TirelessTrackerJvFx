@@ -197,8 +197,8 @@ public class Controller {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(m_main.getPrimaryStage());
             alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
+            alert.setHeaderText("No Match Selected");
+            alert.setContentText("Please select a match in the table.");
 
             alert.showAndWait();
         }
