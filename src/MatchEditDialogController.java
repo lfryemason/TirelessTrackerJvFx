@@ -42,11 +42,15 @@ public class MatchEditDialogController {
         m_deckNameField.setText(m_matchData.getDeckName());
         m_oppNameField.setText(m_matchData.getOppName());
         int[] results = MatchData.parseResult(m_matchData.getResult());
-        if ( results != null)
+        if ( results != null && m_deckNameField.getText() != null )
         {
             m_winsField.setText(Integer.toString(results[0]));
             m_lossesField.setText(Integer.toString(results[1]));
             m_drawCheckbox.setSelected(results[2] == 1);
+        }
+        else
+        {
+            m_drawCheckbox.setSelected(false);
         }
         m_datePicker.setValue(m_matchData.getDate());
         m_eventNameField.setText(m_matchData.getEventName());
