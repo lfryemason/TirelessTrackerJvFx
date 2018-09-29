@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class Main extends Application {
 
