@@ -180,7 +180,7 @@
          <children>
             <Label fx:id="m_deckNameLabel" text="Label" GridPane.halignment="LEFT">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <Label alignment="CENTER" text="VS." GridPane.columnIndex="1" GridPane.halignment="CENTER">
@@ -190,10 +190,13 @@
             </Label>
             <Label fx:id="m_oppDeckLabel" text="Label" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
+         <BorderPane.margin>
+            <Insets left="14.0" right="14.0" />
+         </BorderPane.margin>
       </GridPane>
    </top>
    <bottom>
