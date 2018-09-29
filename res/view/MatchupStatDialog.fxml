@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchupStatDialogController">
+<BorderPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchupStatDialogController">
    <center>
       <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -204,6 +204,9 @@
          <buttons>
             <Button mnemonicParsing="false" onAction="#handleOkButton" text="OK" />
          </buttons>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" />
+         </padding>
       </ButtonBar>
    </bottom>
 </BorderPane>
