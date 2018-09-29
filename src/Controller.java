@@ -65,7 +65,6 @@ public class Controller {
         showMatchDetails(null);
         showOverallStats();
 
-        //m_pieChart.setTitle("Overall match statistics");
         m_tableView.getSelectionModel().selectedItemProperty().addListener((obs,old,newM) -> showMatchDetails(newM));
     }
 
@@ -164,11 +163,12 @@ public class Controller {
         int selectedIndex = m_tableView.getSelectionModel().getSelectedIndex();
         if(selectedMatch != null)
         {
-            boolean bOkClicked = m_main.showMatchEditDialog(selectedMatch);
+            MatchData editedMatch = new MatchData(selectedMatch);
+            boolean bOkClicked = m_main.showMatchEditDialog(editedMatch);
             if (bOkClicked)
             {
-                m_main.getMatchList().editMatch(selectedIndex, selectedMatch);
-                showMatchDetails(selectedMatch);
+                m_main.getMatchList().editMatch(selectedIndex, editedMatch);
+                showMatchDetails(editedMatch);
                 showOverallStats();
             }
         }
